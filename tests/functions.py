@@ -1,4 +1,5 @@
 import requests, json, os
+from constants import API_ID, API_HASH, CLIENT_ID, CLIENT_SECRET, INITIAL_BIO
 
 def get_db():
     if os.path.exists('./database.json'):
@@ -27,7 +28,6 @@ def get_spotify_tokens(CLIENT_ID, CLIENT_SECRET, INITIAL_TOKEN, INITIAL_BIO):
     }
     r = requests.post("https://accounts.spotify.com/api/token", data=body)
     info = r.json()
-    
 
 def refresh_token():
     database = get_db()
@@ -46,7 +46,6 @@ def refresh_token():
     with open('./database.json', 'w') as outfile:
         json.dump(database, outfile, indent=4)
 
-
 def get_current_playing():
     database = get_db()
     oauth = {
@@ -54,7 +53,7 @@ def get_current_playing():
     }
     r = requests.get('https://api.spotify.com/v1/me/player/currently-playing', headers=oauth)
     if r.status_code == 200 or r.status_code == 204:
-        return r.text
+        return r.json()
     elif r.status_code == 401:
         r_token = refresh_token()
         get_current_playing()
