@@ -55,5 +55,5 @@ def get_current_playing():
     if r.status_code == 200 or r.status_code == 204:
         return r.json()
     elif r.status_code == 401:
-        r_token = refresh_token()
-        get_current_playing()
+        refresh_token()
+        return get_current_playing()
