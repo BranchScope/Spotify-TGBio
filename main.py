@@ -5,7 +5,7 @@ from functions import *
 from constants import INITIAL_BIO
 
 db = get_db()
-app = Client("spotifytgbio", API_ID, API_HASH)
+app = Client("spotifytgbio", API_ID, API_HASH, no_updates=True)
     
 async def worker(app):
     while True:
