@@ -8,9 +8,9 @@ def get_db():
         return None
 
 def create_db():
-    print("https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-playback-state%20user-read-currently-playing")
+    print(f"https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-playback-state%20user-read-currently-playing")
     INITIAL_TOKEN = input(f"Click on the link above and paste the param you find on \"code=\": ")
-    tokens = get_spotify_tokens(CLIENT_ID, CLIENT_SECRET)
+    tokens = get_spotify_tokens(CLIENT_ID, CLIENT_SECRET, INITIAL_TOKEN)
     database = {
         'access_token': tokens['access_token'],
         'refresh_token': tokens['refresh_token'],
@@ -18,7 +18,7 @@ def create_db():
     }
     json.dump(database, open('./database.json', 'w'), indent=4)
 
-def get_spotify_tokens(CLIENT_ID, CLIENT_SECRET, INITIAL_TOKEN, INITIAL_BIO):
+def get_spotify_tokens(CLIENT_ID, CLIENT_SECRET, INITIAL_TOKEN):
     body = {
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET,
@@ -27,7 +27,7 @@ def get_spotify_tokens(CLIENT_ID, CLIENT_SECRET, INITIAL_TOKEN, INITIAL_BIO):
         "code": INITIAL_TOKEN
     }
     r = requests.post("https://accounts.spotify.com/api/token", data=body)
-    info = r.json()
+    return r.json()
 
 def refresh_token():
     database = get_db()
