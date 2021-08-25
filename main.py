@@ -11,7 +11,7 @@ async def worker(app):
     while True:
         current_bio = (await app.get_chat((await app.get_me()).id)).bio
         scp = get_current_playing()
-        if scp is not None and "is_playing" in scp:
+        if scp and "is_playing" in scp:
             if scp["is_playing"] == True:
                 artist = scp["item"]["artists"][0]["name"]
                 song = scp["item"]["name"]
