@@ -26,7 +26,7 @@ python3 main.py
 ---
 
 ### Support/Contributing
-Want to contribute? Pull requests are accepted! Do you need help? Feel free to open an issue or to contact me on [Telegram](https://t.me/SpotifyTGBio).
+Want to contribute? Pull requests are accepted! Do you need help? Feel free to open an issue or to contact me on [Telegram](https://t.me/BranchScope).
 
 ### License
 Licensed under the terms of the [MIT License](LICENSE)

@@ -5,9 +5,6 @@ from functions import *
 from constants import INITIAL_BIO
 
 db = get_db()
-if db == None:
-    db = create_db()
-
 app = Client("spotifytgbio", API_ID, API_HASH)
     
 async def worker(app):
