@@ -53,7 +53,10 @@ def get_current_playing():
     }
     r = requests.get("https://api.spotify.com/v1/me/player/currently-playing", headers=oauth)
     if r.status_code == 200 or r.status_code == 204:
-        return r.json() if r.json() else None
+        try:
+            return r.json()
+        except json.decoder.JSONDecodeError:
+            return None
     elif r.status_code == 401:
         refresh_token()
         return get_current_playing()
