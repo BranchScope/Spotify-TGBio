@@ -61,8 +61,8 @@ def get_current_playing():
         refresh_token()
         return get_current_playing()
     elif r.status_code == 429:
-        print("[LOG] Too many requests, trying again next time...")
+        print("[WARNING] Too many requests, trying again next time...")
         return None
     elif r.status_code == 502:
-        print("[LOG] Spotify is down, i'll re-try soon.")
+        print("[WARNING] Spotify is down, i'll re-try soon.")
         return None
