@@ -24,6 +24,10 @@ async def worker(app):
                 if current_bio != INITIAL_BIO:
                     await app.update_profile(bio=INITIAL_BIO)
                     print(f"[LOG] Updated bio to {INITIAL_BIO}")
+        else:
+            if current_bio != INITIAL_BIO:
+                await app.update_profile(bio=INITIAL_BIO)
+                print(f"[LOG] Updated bio to {INITIAL_BIO}")
         await sleep(5)
 
 app.start()
