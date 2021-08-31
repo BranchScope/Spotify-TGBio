@@ -2,11 +2,11 @@ from pyrogram import Client
 from pyrogram.errors import BadRequest
 from asyncio import * 
 from functions import *
-from constants import INITIAL_BIO
+from constants import API_ID, API_HASH, INITIAL_BIO
 
 db = get_db()
 app = Client("spotifytgbio", API_ID, API_HASH, no_updates=True)
-    
+
 async def worker(app):
     while True:
         current_bio = (await app.get_chat((await app.get_me()).id)).bio

@@ -1,5 +1,5 @@
 import requests, json, os
-from constants import API_ID, API_HASH, CLIENT_ID, CLIENT_SECRET, INITIAL_BIO
+from constants import CLIENT_ID, CLIENT_SECRET, INITIAL_BIO
 
 def get_db():
     if os.path.exists("./database.json"):
@@ -55,7 +55,7 @@ def get_current_playing():
     if r.status_code == 200 or r.status_code == 204:
         try:
             return r.json()
-        except json.decoder.JSONDecodeError:
+        except:
             return None
     elif r.status_code == 401:
         refresh_token()
