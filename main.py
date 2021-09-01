@@ -8,8 +8,9 @@ db = get_db()
 app = Client("spotifytgbio", API_ID, API_HASH, no_updates=True)
 
 async def worker(app):
+    me = await app.get_me()
     while True:
-        current_bio = (await app.get_chat((await app.get_me()).id)).bio
+        current_bio = (await app.get_chat(me.id)).bio
         scp = get_current_playing()
         if scp and "is_playing" in scp:
             if scp["is_playing"] == True:
