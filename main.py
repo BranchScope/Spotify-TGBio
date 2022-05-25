@@ -15,7 +15,7 @@ async def worker(app):
             if scp["is_playing"] == True:
                 artist = scp["item"]["artists"][0]["name"]
                 song = scp["item"]["name"]
-                bio = f"🎵 {artist} - {song}"
+                bio = u"\U0001F3B5" + f" {artist} - {song}"
                 bio = bio if len(bio) <= 70 else INITIAL_BIO
                 if bio != current_bio:
                     await app.update_profile(bio=bio)
