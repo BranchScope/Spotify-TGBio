@@ -33,4 +33,4 @@ Licensed under the terms of the [MIT License](LICENSE)
 
 ---
 
-Join [@SpotifyTGBio](https://t.me/SpotifyTGBio) to stay updated about the project.
+Join [@BranchProjects](https://t.me/BranchProjects) to stay updated about the project.
